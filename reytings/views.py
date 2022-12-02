@@ -90,7 +90,7 @@ def comment_save(request):
 def search(request):
   search_text= request.GET.get('search')
 
-  comanies =Company.objects.filter(is_approved=True).filter(Q(name__icontains=search_text) | Q(description__icontains=search_text)).order_by('created_date')
+  comanies =Company.objects.filter(is_approved=True).filter(Q(name__icontains=search_text) | Q(description__icontains=search_text)|Q(phone__icontains=search_text)|Q(inn__icontains=search_text)).order_by('created_date')
 
   companies_count=comanies.count()
   current =comanies[:6]

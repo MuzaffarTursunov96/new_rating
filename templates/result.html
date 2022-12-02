@@ -4,10 +4,12 @@
 
     <div class="container  bg-light" >
       <div class="d-flex justify-content-center " >
-      <form class="form-inline mt-3" action="{% url 'search' %}">
-          <input class="form-control mr-sm-2" style="min-width:350px;" type="search" name="search" placeholder="Ключовые слово" aria-label="Search">
-          <button class="btn  my-2 my-sm-0 bg-warning text-white" type="submit">Искать</button>
+        
+      <form class="form-inline mt-5" action="{% url 'search' %}" style="width:100%">
+          <input class="form-control mr-sm-3 ml-4" style="width:76%; height: 45px;" type="search" name="search" placeholder="Ключовые слово" aria-label="Search">
+          <button class="btn  my-2 my-sm-0 bg-warning text-white" style="width:17%; height: 45px;" type="submit">Искать</button>
       </form></div>
+      <div class="p-3"></div>
       <div class=" mr-3">
         <div class="d-flex justify-content-center mt-2 ml-5" >
           <div class="mr-auto p-2">
@@ -19,24 +21,27 @@
           </div>
           <div class="p-2 mr-2">
             Сортировка по: &nbsp;
-            <select  id="datesort" width="200" onchange="datasort()">
-              <option value="Дата">Дата</option>
-              <option value="asc">Улушения</option>
-              <option value="desc">Убывания</option>
-            </select>
-
+            
+             
+              <select  id="datesort" width="200" onchange="datasort()">
+                <option value="Дата">Дата</option>
+                <option value="asc">Улушения</option>
+                <option value="desc">Убывания</option>
+              </select>
+            
+            
         </div>
         </div>
       </div>
-      <div class="d-flex justify-content-center mt-2 ml-5" >
+      <div class="container" >
         <div class="row">
           {% for company in current_company %}
-          <div class="col-md-4 pt-2 pr-3">
+          <div class="col-md-6 pl-4 pt-2 col-lg-4 col-sm-12">
             <div class="card" style="width: 19rem;">
               <div class="card-body">
                 <h5 class="card-title"><a href="{% url 'post_detail' company.id %}" class="text-dark" style="text-decoration: none;">{{company.name}}</a></h5>
                 <h6 class="card-subtitle mb-2 text-muted pt-2">Добавлено {{company.created_date|date:'d.m.Y'}}</h6>
-                <p class="card-text p-1">{{company.description|slice:100}}</p>
+                <!-- <p class="card-text p-1">{{company.description|slice:100}}</p> -->
                 
                 
                 <span id="rateMe1"></span>
@@ -64,9 +69,9 @@
           {% endfor %}
         </div>
       </div>
-      <div class="d-flex justify-content-center mt-4 bg-light" >
+      <div class="container" >
         <div class="row">
-          <div class="col-md-8 ml-5 ">
+          <div class="col-md-8 ">
             <div class="ml-3 pr-5">
               <h5 class="bold p-2">Loremmmm ies spum?</h5>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
