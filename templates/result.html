@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load custom %}
+{% block content %}
+
+    <div class="container  bg-light" >
+      <div class="d-flex justify-content-center " >
+      <form class="form-inline mt-3" action="{% url 'search' %}">
+          <input class="form-control mr-sm-2" style="min-width:350px;" type="search" name="search" placeholder="Ключовые слово" aria-label="Search">
+          <button class="btn  my-2 my-sm-0 bg-warning text-white" type="submit">Искать</button>
+      </form></div>
+      <div class=" mr-3">
+        <div class="d-flex justify-content-center mt-2 ml-5" >
+          <div class="mr-auto p-2">
+            {% if companies_count %}
+            Отображают {{companies_count}} из {{current_count}}
+            {% else %}
+            Нету сомпании
+            {% endif %}
+          </div>
+          <div class="p-2 mr-2">
+            Сортировка по: &nbsp;
+            <select  id="datesort" width="200" onchange="datasort()">
+              <option value="Дата">Дата</option>
+              <option value="asc">Улушения</option>
+              <option value="desc">Убывания</option>
+            </select>
+
+        </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-2 ml-5" >
+        <div class="row">
+          {% for company in current_company %}
+          <div class="col-md-4 pt-2 pr-3">
+            <div class="card" style="width: 19rem;">
+              <div class="card-body">
+                <h5 class="card-title"><a href="{% url 'post_detail' company.id %}" class="text-dark" style="text-decoration: none;">{{company.name}}</a></h5>
+                <h6 class="card-subtitle mb-2 text-muted pt-2">Добавлено {{company.created_date|date:'d.m.Y'}}</h6>
+                <p class="card-text p-1">{{company.description|slice:100}}</p>
+                
+                
+                <span id="rateMe1"></span>
+
+                <div class="rating-container theme-krajee-svg rating-sm rating-animate">
+                <div class="rating-stars" tabindex="0">
+                  <span class="empty-stars"><span class="star" title="One Star">
+                    <span class="krajee-icon krajee-icon-star"></span>
+                  </span><span class="star" title="Two Stars"><span class="krajee-icon krajee-icon-star">
+                  </span></span><span class="star" title="Three Stars">
+                    <span class="krajee-icon krajee-icon-star"></span></span>
+                    <span class="star" title="Four Stars"><span class="krajee-icon krajee-icon-star">
+                    </span></span><span class="star" title="Five Stars">
+                    <span class="krajee-icon krajee-icon-star"></span></span>
+                  </span><span class="filled-stars" style="width: {% widthratio company.avg_rating 1 20 %}%;">
+                    <span class="star" title="One Star"><span class="krajee-icon krajee-icon-star">
+                    </span></span><span class="star" title="Two Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Three Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Four Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Five Stars"><span class="krajee-icon krajee-icon-star"></span></span></span></div>
+                    
+                </div>
+              
+              
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="d-flex justify-content-center mt-4 bg-light" >
+        <div class="row">
+          <div class="col-md-8 ml-5 ">
+            <div class="ml-3 pr-5">
+              <h5 class="bold p-2">Loremmmm ies spum?</h5>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
+            </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+    
+{% endblock %}
+    
+ 
+
+ 

@@ -1,0 +1,107 @@
+{% extends 'base.html' %} 
+{% load custom %}
+{% block content %}
+
+<div class="container  pl-5">
+  <input type="hidden" id="company_id" value="{{company.id}}">
+      <div class="pt-5 pb-2 pl-2 ml-1"><h6>{{company.name}} </h6></div>
+      <div class="row ml-1">
+        <div class="col-md-2">
+          Общий рейтинг:
+          <div class="rating-container theme-krajee-svg rating-sm rating-animate">
+            <div class="rating-stars" tabindex="0">
+              <span class="empty-stars"><span class="star" title="One Star">
+                <span class="krajee-icon krajee-icon-star"></span>
+              </span><span class="star" title="Two Stars"><span class="krajee-icon krajee-icon-star">
+              </span></span><span class="star" title="Three Stars">
+                <span class="krajee-icon krajee-icon-star"></span></span>
+                <span class="star" title="Four Stars"><span class="krajee-icon krajee-icon-star">
+                </span></span><span class="star" title="Five Stars">
+                <span class="krajee-icon krajee-icon-star"></span></span>
+              </span><span class="filled-stars" style="width: {% widthratio company.avg_rating 1 20 %}%;">
+                <span class="star" title="One Star"><span class="krajee-icon krajee-icon-star">
+                </span></span><span class="star" title="Two Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Three Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Four Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Five Stars"><span class="krajee-icon krajee-icon-star"></span></span></span></div>
+                {{company.avg_rating |div:1 }} ({{comments_count}})
+            </div>
+            
+        </div>
+        <div class="col-md-7">
+          <ul class="list-group list-group-flush ">
+            <li class="list-group-item  " > <b> Информация: </b></li>
+            <li class="list-group-item ">ИНН: {{company.inn}}</li>
+            <li class="list-group-item ">Адрес : {{company.address}}</li>
+            <li class="list-group-item ">Телефон: {{company.phone}}</li>
+          </ul>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="p-2"> <h6>Отзывы</h6> </div>
+      <div class="row ml-1">
+        <div class="col-md-1" width="1px">
+          <div class="divider  bg-warning" style="width: 100%; height: 3px!important;"></div>
+        </div>
+        <div class="col-md-11">
+          <div class="divider " style=" height: 3px; background-color: rgba(0, 0,0, .1);"></div>
+        </div>
+      </div>
+      {% for comment in comments %}
+      <div class="p-3">
+        <h5>{{comment.owner_name}}</h5>
+        <div class="rating-container theme-krajee-svg rating-sm rating-animate">
+          <div class="rating-stars" tabindex="0">
+            <span class="empty-stars"><span class="star" title="One Star">
+              <span class="krajee-icon krajee-icon-star"></span>
+            </span><span class="star" title="Two Stars"><span class="krajee-icon krajee-icon-star">
+            </span></span><span class="star" title="Three Stars">
+              <span class="krajee-icon krajee-icon-star"></span></span>
+              <span class="star" title="Four Stars"><span class="krajee-icon krajee-icon-star">
+              </span></span><span class="star" title="Five Stars">
+              <span class="krajee-icon krajee-icon-star"></span></span>
+            </span><span class="filled-stars" style="width: {% widthratio comment.rating 1 20 %}%;">
+              <span class="star" title="One Star"><span class="krajee-icon krajee-icon-star">
+              </span></span><span class="star" title="Two Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Three Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Four Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Five Stars"><span class="krajee-icon krajee-icon-star"></span></span></span></div>
+              <h6 class="card-subtitle mb-2 text-muted pt-2">Добавлено {{comment.created_date|date:'d.m.Y'}}</h6>
+          </div>
+          {{comment.description}}
+        </div>
+      {% endfor %}
+      
+
+      <div class="row ml-1">
+        <div class="col-md-1" width="1px">
+          <div class="divider  bg-warning" style="width: 100%; height: 3px!important;"></div>
+        </div>
+        <div class="col-md-11">
+          <div class="divider " style=" height: 3px; background-color: rgba(0, 0,0, .1);"></div>
+        </div>
+      </div>
+      <div class="p-3">
+        <button type="button" class="btn btn-success btn-sm text-right" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
+          
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg>
+              Добавить обьявление
+          
+        </button>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4 " >
+      <div class="row">
+        <div class="col-md-8 ml-5">
+          <div class="ml-3">
+            <h5 class="bold pb-2">Loremmmm is spum?</h5>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
+          </div>
+          </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+{% endblock %}
