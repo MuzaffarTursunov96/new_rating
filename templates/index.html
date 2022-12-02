@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 {% load custom %}
+
+{% block title %}
+  Company ratings
+{% endblock%}
+
+{% block description %}
+<meta name="description" content="Companies ratings!">
+{% endblock %}
+{% block keywords %}
+<meta name="keywords" content="Companies ratings!">
+{% endblock %}
+
+
 {% block content %}
 
     <div class="container  " >
-      <div class="d-flex justify-content-center " >
-        
+
+
       <form class="form-inline mt-5" action="{% url 'search' %}" style="width:100%">
-          <input class="form-control mr-sm-3 ml-4" style="width:76%;" type="search" name="search" placeholder="Ключовые слово" aria-label="Search">
-          <button class="btn  my-2 my-sm-0 bg-warning text-white" style="width:17%;" type="submit">Искать</button>
+          <input class="form-control mr-sm-3 " style="width:80%; height:45px" type="search" name="search" placeholder="Ключовые слово" aria-label="Search">
+          <button class="btn  my-2 my-sm-0 bg-warning text-white" style="width:18%; height:45px" type="submit">Искать</button>
       </form></div>
       <div class="p-3"></div>
-      <div class=" mr-3">
-        <div class="d-flex justify-content-center mt-2 ml-5" >
-          <div class="mr-auto p-2">
+      <div class=" ">
+        <div class="d-flex justify-content-center mt-2 ml-3" >
+          <div class="mr-auto ">
             {% if companies_count %}
             Отображают {{companies_count}} из {{current_count}}
             {% else %}
@@ -21,29 +34,29 @@
           </div>
           <div class="p-2 mr-2">
             Сортировка по: &nbsp;
-            
-             
+
+
               <select  id="datesort" width="200" onchange="datasort()">
                 <option value="Дата">Дата</option>
                 <option value="asc">Улушения</option>
                 <option value="desc">Убывания</option>
               </select>
-            
-            
+
+
         </div>
         </div>
-      </div>
+
       <div class="container" >
         <div class="row">
           {% for company in current_company %}
-          <div class="col-md-6 pl-4 pt-2 col-lg-4 col-sm-12">
-            <div class="card" style="width: 19rem;">
+          <div class="col-md-6  pt-2 col-lg-4 col-sm-12">
+            <div class="card" style="width: 100%">
               <div class="card-body">
                 <h5 class="card-title"><a href="{% url 'post_detail' company.id %}" class="text-dark" style="text-decoration: none;">{{company.name}}</a></h5>
                 <h6 class="card-subtitle mb-2 text-muted pt-2">Добавлено {{company.created_date|date:'d.m.Y'}}</h6>
                 <!-- <p class="card-text p-1">{{company.description|slice:100}}</p> -->
-                
-                
+
+
                 <span id="rateMe1"></span>
 
                 <div class="rating-container theme-krajee-svg rating-sm rating-animate">
@@ -59,22 +72,22 @@
                   </span><span class="filled-stars" style="width: {% widthratio company.avg_rating 1 20 %}%;">
                     <span class="star" title="One Star"><span class="krajee-icon krajee-icon-star">
                     </span></span><span class="star" title="Two Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Three Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Four Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Five Stars"><span class="krajee-icon krajee-icon-star"></span></span></span></div>
-                    
+
                 </div>
-              
-              
+
+
               </div>
             </div>
           </div>
           {% endfor %}
         </div>
       </div>
-      <hr>
+      <hr class="ml-2">
       <div class="container" >
         <div class="row">
           <div class="col-md-12 ">
-            <div class="ml-3">
-              <h5 class="bold p-2">Loremmmm ies spum?</h5>
+            <div class="">
+              <h5 class="bold pt-2 pb-2">Loremmmm ies spum?</h5>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
@@ -84,9 +97,8 @@
       </div>
 
     </div>
-    
-{% endblock %}
-    
- 
 
- 
+{% endblock %}
+
+
+

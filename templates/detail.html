@@ -1,11 +1,24 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load custom %}
+
+{% block title %}
+{{company.name}}
+{% endblock %}
+
+{% block description %}
+<meta name="description" content="{{company.description}}">
+{% endblock %}
+
+{% block keywords %}
+<meta name="keywords" content="{{company.name}}">
+{% endblock %}
+
 {% block content %}
 
-<div class="container  pl-5">
+<div class="container">
   <input type="hidden" id="company_id" value="{{company.id}}">
-      <div class="pt-5 pb-2 pl-2 ml-1"><h6>{{company.name}} </h6></div>
-      <div class="row ml-1">
+      <div class="pt-5 pb-2 "><h4>{{company.name}} </h4></div>
+      <div class="row ">
         <div class="col-md-2">
           Общий рейтинг:
           <div class="rating-container theme-krajee-svg rating-sm rating-animate">
@@ -23,7 +36,7 @@
                 </span></span><span class="star" title="Two Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Three Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Four Stars"><span class="krajee-icon krajee-icon-star"></span></span><span class="star" title="Five Stars"><span class="krajee-icon krajee-icon-star"></span></span></span></div>
                 {{company.avg_rating |div:1 }} ({{comments_count}})
             </div>
-            
+
         </div>
         <div class="col-md-7">
           <ul class="list-group list-group-flush ">
@@ -35,9 +48,9 @@
         </div>
         <div class="col-md-3"></div>
       </div>
-      <div class="p-2"> <h6>Отзывы</h6> </div>
-      <div class="row ml-1">
-        <div class="col-md-1" width="1px">
+      <div class="pb-2 pt-2"> <h6>Отзывы</h6> </div>
+      <div class="row">
+        <div class="col-md-1" >
           <div class="divider  bg-warning" style="width: 100%; height: 3px!important;"></div>
         </div>
         <div class="col-md-11">
@@ -45,7 +58,7 @@
         </div>
       </div>
       {% for comment in comments %}
-      <div class="p-3">
+      <div class="pt-2 pb-4">
         <h5>{{comment.owner_name}}</h5>
         <div class="rating-container theme-krajee-svg rating-sm rating-animate">
           <div class="rating-stars" tabindex="0">
@@ -65,9 +78,9 @@
           {{comment.description}}
         </div>
       {% endfor %}
-      
 
-      <div class="row ml-1">
+
+      <div class="row ">
         <div class="col-md-1" width="1px">
           <div class="divider  bg-warning" style="width: 100%; height: 3px!important;"></div>
         </div>
@@ -75,22 +88,22 @@
           <div class="divider " style=" height: 3px; background-color: rgba(0, 0,0, .1);"></div>
         </div>
       </div>
-      <div class="p-3">
+      <div class="pt-4">
         <button type="button" class="btn btn-success btn-sm text-right" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
-          
+
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
               <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
             </svg>
               Добавить обьявление
-          
+
         </button>
       </div>
     </div>
 
-    <div class="d-flex justify-content-center mt-4 " >
+    <div class="d-flex justify-content-center mt-5 " >
       <div class="row">
-        <div class="col-md-8 ml-5">
-          <div class="ml-3">
+        <div class="col-md-12 ml-1">
+          <div class="">
             <h5 class="bold pb-2">Loremmmm is spum?</h5>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam praesentium architecto repudiandae, aliquid iste voluptate nulla! Asperiores fugit autem aut id dolorem praesentium reiciendis obcaecati nam enim qui, eveniet eligendi.
@@ -99,7 +112,7 @@
           </div>
       </div>
     </div>
-    
+
   </div>
 </div>
 

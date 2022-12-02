@@ -5,7 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company Reviews</title>
+   <title>
+    {% block title %}
+    {% endblock %}
+  </title>
+  {% block description %}
+  {% endblock %}
+  {% block keywords  %}
+  {% endblock %}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -65,14 +72,14 @@ $("#input-id").rating({'size':'sm'});
 </head>
 <body>
   <div class="container">
- 
+
     <div class="d-flex  mt-2" >
-      <div class="mr-auto p-2"><h4>Отзывы </h4><br><span class="badge badge-pill badge-light" style="color: rgba(0,0,0,0.3);">Честные отзывы о бизнесе</span></div>
+      <div class="mr-auto "><h4>Отзывы </h4><span class="badge badge-pill badge-light " style="color: rgba(0,0,0,0.3); ">Честные отзывы о бизнесе</span></div>
       <div class="p-2 mr-2"><a href="{% url 'index' %}" class="text-dark" style="text-decoration: none;">Главная</a> </div>
       <div class="p-2 mr-3"><a href="" class="text-dark" style="text-decoration: none;">Пример страницы</a> </div>
       <div class="p-2">
         <button type="button" style="height: 40px;" class="btn btn-success btn-sm text-right" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-          
+
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
           </svg>
@@ -80,12 +87,12 @@ $("#input-id").rating({'size':'sm'});
         </button>
         <!-- <button type="button" class="btn btn-success btn-sm text-right" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
         </button> -->
-        
+
       </div>
     </div>
     <hr class=" m-0 p-0">
 
-    
+
 
 {% block content %}
 
@@ -108,7 +115,7 @@ $("#input-id").rating({'size':'sm'});
             <label class="form-label" >Имя компании *</label>
             <input type="text" id="company_name" class="form-control bg-light"  required />
           </div>
-        
+
           <div class="form-outline mb-1">
             <label class="form-label" >ИНН компании * </label>
             <input type="text" id="company_inn" class="form-control bg-light" required />
@@ -121,13 +128,13 @@ $("#input-id").rating({'size':'sm'});
             <label class="form-label">Телефон компании *</label>
             <input type="text" id="company_phone" class="form-control bg-light"  required />
           </div>
-        
+
           <!-- Message input -->
           <div class="form-outline mb-1">
             <label  >Сообщения * </label>
             <textarea class="form-control bg-light"  rows="4" required  id="company_msg"></textarea>
           </div>
-         
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
@@ -153,7 +160,7 @@ $("#input-id").rating({'size':'sm'});
             <label class="form-label" >Имя *</label>
             <input type="text" id="name" class="form-control bg-light" required />
           </div>
-        
+
           <!-- Email input -->
           <div class="form-outline mb-1">
             <label class="form-label" >Е-почта *</label>
@@ -204,16 +211,16 @@ location.href="{% url 'sort'%}"+'?sort='+options;
     // var modal =document.getElementById('exampleModal');
     const myModalEl = document.getElementById('exampleModal');
     var inn =document.getElementById('company_inn').value;
-  
+
     var company_address =document.getElementById('company_address').value;
     var company_phone =document.getElementById('company_phone').value;
     var company_msg =document.getElementById('company_msg').value;
-    
+
     var csrftoken =document.querySelector('[name="csrfmiddlewaretoken"]').value;
-    
- 
+
+
     var url ="{% url 'company_save' %}";
-   
+
     $.ajax({
       type:'POST',
       url:url,
@@ -227,7 +234,7 @@ location.href="{% url 'sort'%}"+'?sort='+options;
 
       },
       success:function(response){
-      
+
 
         if(response.status=='Success'){
           Swal.fire(
@@ -253,18 +260,18 @@ location.href="{% url 'sort'%}"+'?sort='+options;
     });
   }
   function comment_save(){
-   
+
     var company_id ='{{company.id}}'
-    
+
     var name =document.getElementById('name').value;
     // var modal =document.getElementById('exampleModal');
     const myModalEl = document.getElementById('exampleModal2');
     var email =document.getElementById('email').value;
-  
+
     var comment =document.getElementById('comment').value;
-    
+
     var csrftoken =document.querySelector('[name="csrfmiddlewaretoken"]').value;
-    
+
     var caption =$('.caption').text();
     // console.log(caption);
     if (caption =='Not Rated'){
@@ -314,7 +321,7 @@ location.href="{% url 'sort'%}"+'?sort='+options;
 
       },
       success:function(response){
-      
+
 
         if(response.status=='Success'){
           Swal.fire(
@@ -334,7 +341,7 @@ location.href="{% url 'sort'%}"+'?sort='+options;
         element.remove();
         myModalEl.style='display:none';
         location.reload(true);
-        
+
       }
 
     });
