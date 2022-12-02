@@ -80,6 +80,10 @@ class User(AbstractBaseUser):
 
     def has_module_perms(self, app_label):
         return True
+        
+    def get_all_permissions(user=None):
+        if user.is_superadmin:
+            return set()
 
     def get_role(self):
       if self.role == 1:
@@ -117,6 +121,10 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name='Компании'
+        verbose_name_plural='Компания'
+
 
 class Comments(models.Model):
     owner_name = models.CharField(max_length=255,null=True,blank=True)
@@ -131,3 +139,6 @@ class Comments(models.Model):
     def __str__(self):
         return f'{self.owner_name}  {self.company.name}'
 
+    class Meta:
+        verbose_name='Комменты'
+        verbose_name_plural='Коммент'
