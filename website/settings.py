@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'testowa',
-        'USER': 'testowy',
-        'PASSWORD': 'mypassword',
+        'NAME': 'koshelkovnn_profirm',
+        'USER': '046883112_firm',
+        'PASSWORD': 'Grandstream',
         'HOST': 'localhost',
         'PORT': '3306',
     }
